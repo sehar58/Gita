@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+   <meta charset= "UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible"content="ie=edge">
+   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+   <title>Document</title>
+ </head>
+ <body>
+   <div id="app"></div>
+
+   <script type="text/babel">
+
+   class App extends React.Component
+   {
+
+     handleclick= (e)=>
+     {
+       this.setState({day:2,tech:"reactjs"});
+       console.log(this.state);
+     }
+     handleCopy(e)
+     {
+       console.log("I told you ,you cheater");
+     }
+     handleChange=(e)=>
+     {
+       this.setState({tech:e.target.value});
+     }
+     handleSubmit=(e)=>
+    {
+      e.preventDefault();
+      console.log("form submiteed,your new tech is ",this.state.tech);
+    }
+
+     state = {
+       tech:'react',
+       day:1
+     }
+     render()
+     {
+       return(
+         <div className="app-content">
+         <h1>React day 1,23 feb 2021</h1>
+         <p> {Math.random() *10}</p>
+         <p>Hey its my {this.state.day} day of learning {this.state.tech}</p>
+         <button onClick={this.handleclick}>Click me</button>
+
+         <p onCopy={this.handleCopy}>if you try to copy me ,you will get a nasty msg on console</p>
+         <form onSubmit={this.handleSubmit}>
+         <input type="text" onChange={this.handleChange}/>
+         <button>Submit</button>
+         </form>
+         </div>
+       )
+     }
+   }
+   ReactDOM.render (<App />, document.getElementById('app'));
+   </script>
+</body>
+</html>
